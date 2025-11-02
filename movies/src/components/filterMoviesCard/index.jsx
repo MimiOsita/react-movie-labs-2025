@@ -38,6 +38,7 @@ export default function FilterMoviesCard(props) {
         return <h1>{error.message}</h1>;
       }
       const genres = data.genres;
+      console.log(data.genres);
       if (genres[0].name !== "All"){
         genres.unshift({ id: "0", name: "All" });
       }
@@ -79,7 +80,7 @@ export default function FilterMoviesCard(props) {
     />
 
         <FormControl sx={{...formControl}}>
-          <InputLabel id="genre-label">Genre</InputLabel>
+          <InputLabel id="genre-label">Filter current list by genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"

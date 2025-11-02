@@ -91,9 +91,9 @@ export const getMovies = () => {
    });
   };
 
-  export const getUpcomingMovies = () => {
+  export const getPopularMovies = () => {
     return fetch(
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=&{import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1'
+      `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
     ).then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -109,7 +109,7 @@ export const getMovies = () => {
 
   export const getTopRatedMovies = () => {
     return fetch(
-      'https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1'
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
     ).then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
@@ -125,7 +125,7 @@ export const getMovies = () => {
 
   export const getNowPlayingMovies = () => {
     return fetch(
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1'
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
     ).then((response) => {
       if (!response.ok) {
         return responsiveFontSizes.json().then((error) => {
@@ -142,7 +142,7 @@ export const getMovies = () => {
   export const getMoviesByGenre = ({ queryKey }) => {
     const [, { genreId, page = 1 }] = queryKey;
     return fetch(
-      'https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}'
+      `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
     ).then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {

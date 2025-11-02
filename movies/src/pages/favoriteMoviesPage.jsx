@@ -14,21 +14,10 @@ const FavoriteMoviesPage = () => {
   // Create an array of queries and run in parallel.
   const favoriteMovieQueries = useQueries({
     queries: movieIds.map((movieId) => {
-       return (
-        <PageTemplate
-          title="Favorite Movies"
-          movies={movies}
-          action={(movie) => {
-            return (
-              <>
-                <RemoveFromFavorites movie={movie} />
-                <WriteReview movie={movie} />
-              </>
-            );
-          }}
-        />
-      );
-    
+      return {
+        queryKey: ['movie', { id: movieId }],
+        queryFn: getMovie,
+      }
     })
   });
   
@@ -50,9 +39,17 @@ const FavoriteMoviesPage = () => {
     <PageTemplate
       title="Favourite Movies"
       movies={movies}
-      selectFavorite={toDo}
+      action={(movie) => {
+        return (
+          <>
+          <RemoveFromFavorites movie={movie} />
+          <WriteReview movie={movie} />
+        </>
+        );
+      }}
     />
   );
 };
 
 export default FavoriteMoviesPage;
+
