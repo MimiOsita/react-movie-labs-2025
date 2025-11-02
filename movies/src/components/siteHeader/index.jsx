@@ -71,7 +71,7 @@ const SiteHeader = () => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Mimi's Movie!
+            Mimi's Movie App!
           </Typography>
             {isMobile ? (
               <>
