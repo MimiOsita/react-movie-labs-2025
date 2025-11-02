@@ -9,7 +9,10 @@ import SiteHeader from './components/siteHeader';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
-
+import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
+import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
+import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
+import GenreMoviesPage from "./pages/genreMoviesPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
