@@ -12,21 +12,25 @@ const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
-  return (
-    <PageTemplate
-      title="Favorite Movies"
-      movies={movies}
-      action={(movie) => {
-        return (
-          <>
-            <RemoveFromFavorites movie={movie} />
-            <WriteReview movie={movie} />
-          </>
-        );
-      }}
-    />
-  );
-
+  const favoriteMovieQueries = useQueries({
+    queries: movieIds.map((movieId) => {
+       return (
+        <PageTemplate
+          title="Favorite Movies"
+          movies={movies}
+          action={(movie) => {
+            return (
+              <>
+                <RemoveFromFavorites movie={movie} />
+                <WriteReview movie={movie} />
+              </>
+            );
+          }}
+        />
+      );
+    
+    })
+  });
   
   // Check if any of the parallel queries is still loading.
   const isPending = favoriteMovieQueries.find((m) => m.isPending === true);
